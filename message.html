@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactez-nous</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #c4c7d3, #1f34d7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 450px;
+            transform: scale(0.9);
+            animation: popIn 0.5s ease-in-out forwards;
+        }
+        @keyframes popIn {
+            from { transform: scale(0.85); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 12px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 6px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            transition: border 0.3s, box-shadow 0.3s;
+        }
+        input:focus, textarea:focus {
+            border-color: #2f50e3;
+            box-shadow: 0 0 8px rgba(27, 54, 176, 0.5);
+        }
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #667eea;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #1405e1;
+            transform: scale(1.05);
+        }
+        .success-message {
+            display: none;
+            text-align: center;
+            color: green;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Contactez-nous</h2>
+    <form id="contactForm">
+        <label for="name">Nom :</label>
+        <input type="text" id="name" name="name" placeholder="Entrez votre nom" required>
+
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email" placeholder="Entrez votre email" required>
+
+        <label for="phone">Téléphone :</label>
+        <input type="tel" id="phone" name="phone" placeholder="Entrez votre numéro de téléphone" required>
+
+        <label for="message">Message :</label>
+        <textarea id="message" name="message" rows="5" placeholder="Écrivez votre message ici..." required></textarea>
+
+        <a href="index.html"><button type="button">Envoyer</button></a>
+        <p class="success-message" id="successMessage">Formulaire soumis avec succès !</p>
+    </form>
+</div>
+
+<script>
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        let button = document.querySelector("button");
+        let successMessage = document.getElementById("successMessage");
+        button.textContent = "Envoi en cours...";
+        button.style.background = "#ff9800";
+        setTimeout(() => {
+            successMessage.style.display = "block";
+            button.textContent = "Envoyer";
+            button.style.background = "#667eea";
+            document.getElementById("contactForm").reset();
+        }, 2000);
+    });
+</script>
+
+</body>
+</html>
